@@ -1,6 +1,6 @@
 /*
 Author       : Dreamguys
-Template Name: PreClinic - Medical and Hospital Admin Template
+Template Name: Medicare - Medical and Hospital Admin Template
 Version      : 1.0
 */
 
@@ -702,7 +702,7 @@ textarea.form-control {
 -----------------------*/
 
 .header {
-	background-color: #009efb;
+	background-color: #497c9a;
 	left: 0;
 	position: fixed;
 	right: 0;
@@ -857,8 +857,8 @@ textarea.form-control {
 	color: #009efb;
 }
 .sidebar-menu li.active a {
-	color: #009efb;
-	background-color: #f3f3f3;
+	color: #fff;
+	background-color: #6b9bc5;
 }
 .menu-title {
 	color: #333;

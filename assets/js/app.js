@@ -1,6 +1,6 @@
 /*
 Author       : Dreamguys
-Template Name: PreClinic - Medical and Hospital Admin Template
+Template Name: Medicare - Medical and Hospital Admin Template
 Version      : 1.0
 */
 $(document).ready(function($) {
