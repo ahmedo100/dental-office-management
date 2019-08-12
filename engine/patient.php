@@ -14,12 +14,20 @@ class Patient {
   private $full_name_patient , $phone_number_patient , $gender_patient ,$address_patient;
 
   function  __construct($id_patient){
-        $this->id_patient = $id_patient;
-        $db = new DatabaseUtility(SERVERNAME,USERNAME,PASSWORD);
-        $this->initPatient();
     }
 
-  public static function 
+  public static function initPatientWithId($id_patient){
+    $instance = new self();
+    $instance->db =  new DatabaseUtility(SERVERNAME,USERNAME,PASSWORD);
+    $instance->initPatient();
+    return $instance;
+  }
+
+  public static function initPatientWithNothing(){
+    $instance = new self();
+    $instance->db =  new DatabaseUtility(SERVERNAME,USERNAME,PASSWORD);
+    return $instance;
+  }
   function initPatient(){
     $patient=  $db->selectData("patients","*","id_patient='"+$this->id_patient+"';")[0];
         $this->full_name_patient= $patient["full_name_patient"];
@@ -29,7 +37,7 @@ class Patient {
   }
 
   function getPatientById($id_patient){
-    return new Patient($id_patient);
+    return  Patient::initPatientWithId($id_patient);
   }
 
   function addPatient($patient_arr){

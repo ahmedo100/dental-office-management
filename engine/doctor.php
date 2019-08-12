@@ -1,5 +1,6 @@
 <?php   
-
+require_once 'database-logs.php';
+require_once 'database-functions.php';
 class Doctor {
 
     // Parameters ..
@@ -13,7 +14,7 @@ class Doctor {
             // to allocate memory
     }
     // constructor that init's a doctor with ID 
-    public static function initWithId($id_doctor){
+    public static function initDoctorWithId($id_doctor){
         $instance = new self();
         $instance->id_doctor=$id_doctor;
         $instance->db = new DatabaseUtility(SERVERNAME,USERNAME,PASSWORD);
@@ -36,7 +37,7 @@ class Doctor {
     }
 
     function getDoctorById($id_doctor){
-        return new Doctor($id_doctor);
+        return Doctor::initDoctorWithId($id_doctor);
     }
 
     
