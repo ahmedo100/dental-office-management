@@ -15,7 +15,7 @@ class InputHandler {
 
     public function checkEmpty(){
         $emptyIndex = array();
-        forEach($valuesArray as $index => $val){
+        forEach($this->valuesArray as $index => $val){
             if(empty($val)){
                 array_push($emptyIndex,$index);
             }
