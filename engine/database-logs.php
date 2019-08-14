@@ -1,6 +1,6 @@
 <?php 
     
-    define("SERVERNAME","mysql:host=localhost;dbname=zewedjni-db;charset=utf8mb4;");
+    define("SERVERNAME","mysql:host=localhost;dbname=dental_office_db;charset=utf8mb4;");
 
     define("USERNAME","root");
 
