@@ -25,17 +25,16 @@
 		   });
 
            function addPatient(){
-               var user_gender = "";
+               var user_gender ;
                if($("#user-male").attr('checked', 'checked'))
-                   user_gender = "1";
+                   user_gender = 1;
                else if($("#user-female").attr('checked', 'checked'))
-                   user_gender = "0";
+                   user_gender = 0;
 
 
                $.ajax({
                    url : './engine/ajax.php',
                    type : 'POST',
-                   dataType : 'html',
                    data: { "type": "addPatient",
                            "lastName": $("#user-last-name").val(),
                            "firstName": $("#user-first-name").val(),
@@ -45,9 +44,10 @@
                            "phone": $("#user-phone").val(),
                          },
                    success : function(data){
-                       alert(data);
-                           if(data == "created") {
+                           alert(data);
+                           if($.trim(data)== "created") {
                                alert("Patient ajouter avec succés");
+                               //document.location.href="./patients.php";
                            }else {
                                alert("Vous devez remplir tous les champs");
                            }
@@ -153,7 +153,7 @@
                         <span>Admin</span>
                     </a>
 					<div class="dropdown-menu">
-						<a class="dropdown-item" href="profile.html">My Profile</a>
+						<a class="dropdown-item" href="profile.php">My Profile</a>
 						<a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
 						<a class="dropdown-item" href="settings.html">Settings</a>
 						<a class="dropdown-item" href="login.html">Logout</a>
@@ -163,7 +163,7 @@
             <div class="dropdown mobile-user-menu float-right">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="profile.html">My Profile</a>
+                    <a class="dropdown-item" href="profile.php">My Profile</a>
                     <a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
                     <a class="dropdown-item" href="settings.html">Settings</a>
                     <a class="dropdown-item" href="login.html">Logout</a>
@@ -182,7 +182,7 @@
                             <a href="doctors.html"><i class="fa fa-user-md"></i> <span>Doctors</span></a>
                         </li>
                         <li class="active">
-                            <a href="patients.html"><i class="fa fa-wheelchair"></i> <span>Patients</span></a>
+                            <a href="patients.php"><i class="fa fa-wheelchair"></i> <span>Patients</span></a>
                         </li>
                         <li>
                             <a href="appointments.html"><i class="fa fa-calendar"></i> <span>Appointments</span></a>
@@ -300,7 +300,7 @@
                                 <li><a href="forgot-password.html"> Forgot Password </a></li>
                                 <li><a href="change-password2.html"> Change Password </a></li>
                                 <li><a href="lock-screen.html"> Lock Screen </a></li>
-                                <li><a href="profile.html"> Profile </a></li>
+                                <li><a href="profile.php"> Profile </a></li>
                                 <li><a href="gallery.html"> Gallery </a></li>
                                 <li><a href="error-404.html">404 Error </a></li>
                                 <li><a href="error-500.html">500 Error </a></li>

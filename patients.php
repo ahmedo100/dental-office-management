@@ -1,8 +1,9 @@
+<?php require_once "./engine/displayfunctions.php";?>
 <!DOCTYPE html>
 <html lang="en">
 
 
-<!-- Mirrored from dreamguys.co.in/Medicare/template/patients.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 07 Aug 2019 13:19:27 GMT -->
+<!-- Mirrored from dreamguys.co.in/Medicare/template/patients.php by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 07 Aug 2019 13:19:27 GMT -->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
@@ -73,7 +74,7 @@
                         <span>Edward Snowden</span>
                     </a>
 					<div class="dropdown-menu">
-						<a class="dropdown-item" href="profile.html">Mon Profil</a>
+						<a class="dropdown-item" href="profile.php">Mon Profil</a>
 						<a class="dropdown-item" href="edit-profile.html">Paramétres Profil</a>
 						<a class="dropdown-item" href="settings.html">Paramétres</a>
 						<a class="dropdown-item" href="login.html">Déconnexion</a>
@@ -83,7 +84,7 @@
             <div class="dropdown mobile-user-menu float-right">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="profile.html">Mon Profil</a>
+                    <a class="dropdown-item" href="profile.php">Mon Profil</a>
                     <a class="dropdown-item" href="edit-profile.html">Paramétres Profil</a>
                     <a class="dropdown-item" href="settings.html">Paramétres</a>
                     <a class="dropdown-item" href="login.html">Déconnexion</a>
@@ -110,48 +111,10 @@
                     </div>
                     <button type="button" class="btn btn-info">Rechercher</button>
                 </div>
-
-
                 <div class="row doctor-grid">
-                    <div class="col-md-4 col-sm-4  col-lg-3">
-                        <div class="profile-widget">
-                            <div class="doctor-img">
-                                <a class="avatar" href="profile.html"><img alt="" src="assets/img/user.jpg"></a>
-                            </div>
-                            <div class="dropdown profile-action">
-                                <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="edit-doctor.html"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_doctor"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                </div>
-                            </div>
-                            <h4 class="doctor-name text-ellipsis"><a href="profile.html">Karim Abdi</a></h4>
-                            <div class="doc-prof">22 ans</div>
-                            <div class="user-country">
-                                <i class="fa fa-phone"></i> 05 57 74 28 83
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="col-md-4 col-sm-4  col-lg-3">
-                        <div class="profile-widget">
-                            <div class="doctor-img">
-                                <a class="avatar" href="profile.html"><img alt="" src="assets/img/user.jpg"></a>
-                            </div>
-                            <div class="dropdown profile-action">
-                                <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="edit-doctor.html"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_doctor"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                </div>
-                            </div>
-                            <h4 class="doctor-name text-ellipsis"><a href="profile.html">Ahmed Nadir Baoun</a></h4>
-                            <div class="doc-prof">21 ans</div>
-                            <div class="user-country">
-                                <i class="fa fa-phone"></i> 05 50 00 00 00
-                            </div>
-                        </div>
-                    </div>
+                <?php displayAllPatients(); ?>
+
 
                 </div>
 
@@ -404,5 +367,5 @@
 </body>
 
 
-<!-- Mirrored from dreamguys.co.in/Medicare/template/patients.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 07 Aug 2019 13:19:29 GMT -->
+<!-- Mirrored from dreamguys.co.in/Medicare/template/patients.php by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 07 Aug 2019 13:19:29 GMT -->
 </html>

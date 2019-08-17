@@ -16,7 +16,7 @@ class InputHandler {
     public function checkEmpty(){
         $emptyIndex = array();
         forEach($this->valuesArray as $index => $val){
-            if(empty($val) && in_array($index,$indexArray)){
+            if(empty($val) && in_array($index,$this->indexArray)){
                 array_push($emptyIndex,$index);
             }
         }
@@ -24,12 +24,6 @@ class InputHandler {
     }
 
         
-    public function insertInputs($tableName){
-        $return_result =  $db->insertData($tableName,$valuesArray);
- 
-        if($return_result["success"]!=true){
-            print_r($return_result);
-        }
-     }
+
     
 }

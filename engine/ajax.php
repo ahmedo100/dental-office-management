@@ -11,10 +11,19 @@ if($_POST["type"] == "addPatient"){
     if($inputHundler->checkEmpty() != array()) {
         echo "notcreated";
     }else {
-        echo "created";
-        /*$patient = new Patient();
+        $patient = Patient::initPatientWithNothing();
+        $valueArray = array(
+            "id_doctor" => "1",
+            "full_name_patient" => $_POST["lastName"]." ".$_POST["firstName"],
+            "birthdate_patient" => date("Y-m-d", strtotime($_POST["birthdate"])),
+            "phone_number_patient" => $_POST["phone"],
+            "address_patient" => $_POST["address"],
+            "gender_patient" => $_POST["gender"]
+        );
         $patient->addPatient($valueArray);
-    */
+        echo "created";
+
+
     }
 }
 

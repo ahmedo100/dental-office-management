@@ -10,10 +10,10 @@ require_once "database-logs.php";
 
 class Patient {
   
-  private $db;
-  private $full_name_patient , $phone_number_patient , $gender_patient ,$address_patient;
+  public $db;
+  public $full_name_patient , $phone_number_patient , $gender_patient ,$address_patient ,$id_patient , $birthdate_patient;
 
-  function  __construct($id_patient){
+  function  __construct(){
     }
 
   public static function initPatientWithId($id_patient){
@@ -28,8 +28,21 @@ class Patient {
     $instance->db =  new DatabaseUtility(SERVERNAME,USERNAME,PASSWORD);
     return $instance;
   }
+
+  public static function initPatientWithArray($array){
+      $instance = new self();
+
+         $instance->id_patient = $array["id_patient"];
+         $instance->full_name_patient = $array["full_name_patient"];
+         $instance->phone_number_patient = $array["phone_number_patient"];
+         $instance->gender_patient = $array["gender_patient"];
+         $instance->phone_number_patient = $array["phone_number_patient"];
+         $instance->address_patient = $array["address_patient"];
+
+      return $instance;
+  }
   function initPatient(){
-    $patient=  $db->selectData("patients","*","id_patient='"+$this->id_patient+"';")[0];
+    $patient=  $this->db->selectData("patients","*","id_patient='$this->id_patient';")[0];
         $this->full_name_patient= $patient["full_name_patient"];
         $this->phone_number_patient= $patient["phone_number_patient"];
         $this->gender_patient = $patient["gender_patient"];
@@ -40,19 +53,54 @@ class Patient {
     return  Patient::initPatientWithId($id_patient);
   }
 
-  function addPatient($patient_arr){
-      $return_result = $db->insertData("patient",$patient_arr);
-
-      if($return_result["success"]!=true){
-          throw new Exception;
+  function getAllPatients(){
+      $id_doctor=1;
+     $tmp_patient_array =  $this->db->selectData("patients","*","id_doctor='$id_doctor'");
+     $patient_array = array();
+     forEach($tmp_patient_array["result"]  as $tmp_array){
+         array_push($patient_array,Patient::initPatientWithArray($tmp_array));
       }
+     return $patient_array;
+  }
+
+  function addPatient($patient_arr){
+      $return_result = $this->db->insertData("patients",$patient_arr);
+
 
       return true;
   }
+    function displayPatient(){
+
+        return " <div class='col-md-4 col-sm-4  col-lg-3'>
+    <div class='profile-widget'>
+        <div class='doctor-img'>
+            <a class='avatar' href='profile.php?id_patient=$this->id_patient'><img alt='' src='assets/img/user.jpg'></a>
+        </div>
+        <div class='dropdown profile-action'>
+            <a href='#' class='action-icon dropdown-toggle' data-toggle='dropdown' aria-expanded='false'><i class='fa fa-ellipsis-v'></i></a>
+            <div class='dropdown-menu dropdown-menu-right'>
+                <a class='dropdown-item' href='edit-doctor.html'><i class='fa fa-pencil m-r-5'></i> Modifier</a>
+                <a class='dropdown-item' href='#' data-toggle='modal' data-target='#delete_doctor'><i class='fa fa-trash-o m-r-5'></i> Supprimer</a>
+            </div>
+        </div>
+        <h4 class='doctor-name text-ellipsis'><a href='profile.php'>$this->full_name_patient</a></h4>
+        <div class='doc-prof'>$this->birthdate_patient</div>
+        <div class='user-country'>
+            <i class='fa fa-phone'></i> $this->phone_number_patient
+        </div>
+    </div>
+</div>";
+}
+
+function toString (){
+      return "id_patient = " . $this->id_patient;
+}
 
 
 
-  
+
+
+
 // Getters // 
   /**
    * Get the value of full_name_patient

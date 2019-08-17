@@ -2,7 +2,7 @@
 <html lang="en">
 
 
-<!-- Mirrored from dreamguys.co.in/Medicare/template/profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 07 Aug 2019 13:19:10 GMT -->
+<!-- Mirrored from dreamguys.co.in/Medicare/template/profile.php by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 07 Aug 2019 13:19:10 GMT -->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
@@ -116,7 +116,7 @@
                         <span>Admin</span>
                     </a>
 					<div class="dropdown-menu">
-						<a class="dropdown-item" href="profile.html">My Profile</a>
+						<a class="dropdown-item" href="profile.php">My Profile</a>
 						<a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
 						<a class="dropdown-item" href="settings.html">Settings</a>
 						<a class="dropdown-item" href="login.html">Logout</a>
@@ -126,7 +126,7 @@
             <div class="dropdown mobile-user-menu float-right">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="profile.html">My Profile</a>
+                    <a class="dropdown-item" href="profile.php">My Profile</a>
                     <a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
                     <a class="dropdown-item" href="settings.html">Settings</a>
                     <a class="dropdown-item" href="login.html">Logout</a>
@@ -145,7 +145,7 @@
                             <a href="doctors.html"><i class="fa fa-user-md"></i> <span>Doctors</span></a>
                         </li>
                         <li>
-                            <a href="patients.html"><i class="fa fa-wheelchair"></i> <span>Patients</span></a>
+                            <a href="patients.php"><i class="fa fa-wheelchair"></i> <span>Patients</span></a>
                         </li>
                         <li>
                             <a href="appointments.html"><i class="fa fa-calendar"></i> <span>Appointments</span></a>
@@ -263,7 +263,7 @@
                                 <li><a href="forgot-password.html"> Forgot Password </a></li>
                                 <li><a href="change-password2.html"> Change Password </a></li>
                                 <li><a href="lock-screen.html"> Lock Screen </a></li>
-                                <li><a class="active" href="profile.html"> Profile </a></li>
+                                <li><a class="active" href="profile.php"> Profile </a></li>
                                 <li><a href="gallery.html"> Gallery </a></li>
                                 <li><a href="error-404.html">404 Error </a></li>
                                 <li><a href="error-500.html">500 Error </a></li>
@@ -670,5 +670,5 @@
 </body>
 
 
-<!-- Mirrored from dreamguys.co.in/Medicare/template/profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 07 Aug 2019 13:19:12 GMT -->
+<!-- Mirrored from dreamguys.co.in/Medicare/template/profile.php by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 07 Aug 2019 13:19:12 GMT -->
 </html>
