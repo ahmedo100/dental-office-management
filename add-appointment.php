@@ -1,8 +1,9 @@
+<?php require_once "./engine/displayfunctions.php";?>
 <!DOCTYPE html>
 <html lang="en">
 
 
-<!-- Mirrored from dreamguys.co.in/Medicare/template/edit-profile.php by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 07 Aug 2019 13:19:12 GMT -->
+<!-- Mirrored from dreamguys.co.in/Medicare/template/add-appointment.php by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 07 Aug 2019 13:20:23 GMT -->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
@@ -30,79 +31,60 @@
 
 <body>
 <div class="main-wrapper">
-       <div id="headerContent"></div>
-       <div id="navbarContent"></div>
-        <div class="page-wrapper">
+    <div id="headerContent"></div>
+    <div id="navbarContent"></div>
+
+      <div class="page-wrapper">
             <div class="content">
                 <div class="row">
-                    <div class="col-sm-12">
-                        <h4 class="page-title">Modifier le profil</h4>
+                    <div class="col-lg-8 offset-lg-2">
+                        <h4 class="page-title">Nouveau rendez-vous</h4>
                     </div>
                 </div>
-                <form>
-                    <div class="card-box">
-                        <h3 class="card-title">Informations</h3>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="profile-basic">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group form-focus">
-                                                <label class="focus-label">Nom</label>
-                                                <input type="text" class="form-control floating" id="first-name-user" value="John">
-                                            </div>
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6">
+									<div class="form-group">
+										<label>Patient</label>
+										<select class="select">
+											<option>Selectionner le patient</option>
+                                            <?php displaySelectPatients(); ?>
+										</select>
+									</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Date</label>
+                                        <div class="cal-icon">
+                                            <input type="text" class="form-control datetimepicker">
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group form-focus">
-                                                <label class="focus-label">Prénom</label>
-                                                <input type="text" class="form-control floating" id="last-name-user" value="Doe">
-                                            </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Time</label>
+                                        <div class="time-icon">
+                                            <input type="text" class="form-control" id="datetimepicker3">
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group form-focus">
-                                                <label class="focus-label">Date de naissance</label>
-                                                <div class="cal-icon">
-                                                    <input class="form-control floating datetimepicker" id="birthdate-user" type="text" value="05/06/1985">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group form-focus select-focus">
-                                                <label class="focus-label">Sexe</label>
-                                                <select class="select form-control floating">
-                                                    <option value="male selected" id="male-user">Homme</option>
-                                                    <option value="female" id="female-user">Femme</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group form-focus">
-                                                <label class="focus-label">Adress</label>
-                                                <input type="text" class="form-control floating" id="adress-user" value="4487 Snowbird Lane">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="form-group form-focus">
-                                                <label class="focus-label">Téléphone</label>
-                                                <div class="cal-icon">
-                                                    <input class="form-control floating datetimepicker" id="phone-user" type="text" value="05/06/1985">
-                                                </div>
-                                            </div>
-                                        </div>
-
-
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                            <div class="form-group">
+                                <label>Message</label>
+                                <textarea cols="30" rows="4" class="form-control"></textarea>
+                            </div>
+                            <div class="m-t-20 text-center">
+                                <button class="btn btn-primary submit-btn">Enregistrer</button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="text-center m-t-20">
-                        <button class="btn btn-primary submit-btn" type="button">Enregistrer</button>
-                    </div>
-                </form>
+                </div>
             </div>
-            <div class="notification-box">
+			<div class="notification-box">
                 <div class="msg-sidebar notifications msg-noti">
                     <div class="topnav-dropdown-header">
                         <span>Messages</span>
@@ -309,6 +291,7 @@
                     <div class="topnav-dropdown-footer">
                         <a href="chat.html">See all messages</a>
                     </div>
+					
                 </div>
             </div>
         </div>
@@ -319,11 +302,19 @@
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/jquery.slimscroll.js"></script>
     <script src="assets/js/select2.min.js"></script>
-    <script src="assets/js/moment.min.js"></script>
-    <script src="assets/js/bootstrap-datetimepicker.min.js"></script>
+	<script src="assets/js/moment.min.js"></script>
+	<script src="assets/js/bootstrap-datetimepicker.min.js"></script>
     <script src="assets/js/app.js"></script>
+	<script>
+            $(function () {
+                $('#datetimepicker3').datetimepicker({
+                    format: 'LT'
+
+                });
+            });
+     </script>
 </body>
 
 
-<!-- Mirrored from dreamguys.co.in/Medicare/template/edit-profile.php by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 07 Aug 2019 13:19:17 GMT -->
+<!-- Mirrored from dreamguys.co.in/Medicare/template/add-appointment.php by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 07 Aug 2019 13:20:23 GMT -->
 </html>

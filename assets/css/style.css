@@ -1685,9 +1685,7 @@ ul.chat-user-total li i.old-users {
 	background: #fff;
 	overflow: hidden;
 }
-.profile-basic {
-	margin-left: 140px;
-}
+
 .profile-img-wrap img {
 	width: 120px;
 	height: 120px;
@@ -2685,6 +2683,11 @@ a.fc-event:not([href]) {
 .profile-details {
 	text-align: center;
 }
+
+.personal-info  {
+	margin-top : 20px;
+}
+
 .personal-info li .title {
 	color: #515365;
 	float: left;
@@ -2802,9 +2805,7 @@ a.fc-event:not([href]) {
 	padding: 6px 12px;
 	text-align: center;
 }
-.profile-info-left {
-	border-right: 2px dashed #ccc;
-}
+
 .profile-tabs .nav-tabs {
 	background-color: #fff;
 	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
@@ -4922,4 +4923,12 @@ blockquote p {
 		margin: 0 auto;
 		margin-bottom: 10px;
 	}
+}
+
+.canceled_appointment{
+	background: #e74c3c;
+}
+
+.made_appointment{
+	background: #27ae60;
 }

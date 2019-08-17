@@ -11,7 +11,7 @@ require_once "database-logs.php";
 class Patient {
   
   public $db;
-  public $full_name_patient , $phone_number_patient , $gender_patient ,$address_patient ,$id_patient , $birthdate_patient;
+  public $full_name_patient , $phone_number_patient , $gender_patient ,$address_patient ,$id_patient , $birthdate_patient ;
 
   function  __construct(){
     }
@@ -19,6 +19,7 @@ class Patient {
   public static function initPatientWithId($id_patient){
     $instance = new self();
     $instance->db =  new DatabaseUtility(SERVERNAME,USERNAME,PASSWORD);
+    $instance->id_patient = $id_patient;
     $instance->initPatient();
     return $instance;
   }
@@ -34,18 +35,19 @@ class Patient {
 
          $instance->id_patient = $array["id_patient"];
          $instance->full_name_patient = $array["full_name_patient"];
-         $instance->phone_number_patient = $array["phone_number_patient"];
-         $instance->gender_patient = $array["gender_patient"];
+         $instance->birthdate_patient = $array["birthdate_patient"];
+         $instance->gender_patient = $array["gender_patient"] == '1'  ? 'Homme' : 'Femme';
          $instance->phone_number_patient = $array["phone_number_patient"];
          $instance->address_patient = $array["address_patient"];
 
       return $instance;
   }
   function initPatient(){
-    $patient=  $this->db->selectData("patients","*","id_patient='$this->id_patient';")[0];
+    $patient=  $this->db->selectData("patients","*","id_patient='$this->id_patient';")["result"][0];
         $this->full_name_patient= $patient["full_name_patient"];
+        $this->birthdate_patient= $patient["birthdate_patient"];
         $this->phone_number_patient= $patient["phone_number_patient"];
-        $this->gender_patient = $patient["gender_patient"];
+        $this->gender_patient = $patient["gender_patient"] == '1'  ? 'Homme' : 'Femme';
         $this->address_patient = $patient["address_patient"];
   }
 
@@ -91,6 +93,38 @@ class Patient {
     </div>
 </div>";
 }
+
+function displayContactInformations(){
+    return "
+    <div class='profile-info-left'>
+           <h3 class='user-name m-t-0 mb-0'>$this->full_name_patient</h3>
+           <ul class='personal-info'>
+                  <li>
+                    <span class='title'>Téléphone:</span>
+                    <span class='text'>$this->phone_number_patient</span>
+                  </li>
+                  <li>
+                     <span class='title'>Date de naissance:</span>
+                     <span class='text'>$this->birthdate_patient</span>
+                  </li>
+                  <li>
+                    <span class='title'>Adresse:</span>
+                    <span class='text'>$this->address_patient</span>
+                  </li>
+                  <li>
+                    <span class='title'>Sexe:</span>
+                    <span class='text'>$this->gender_patient</span>
+                  </li>
+           </ul>
+
+       </div>";
+}
+
+
+    function displaySelectItemPatient(){
+        return "<option value='$this->id_patient'>$this->full_name_patient</option>";
+    }
+
 
 function toString (){
       return "id_patient = " . $this->id_patient;
