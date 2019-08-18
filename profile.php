@@ -80,40 +80,7 @@
                             <h3 class="card-title">Historique des rendez-vous</h3>
                             <div class="experience-box">
                                 <ul class="experience-list">
-                                    <li>
-                                        <div class="experience-user">
-                                            <div class="before-circle"></div>
-                                        </div>
-                                        <div class="experience-content">
-                                            <div class="timeline-content ">
-                                                <a href="#/" class="name ">09/09/2019</a>
-                                                <div>Prochainement</div>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li>
-                                        <div class="experience-user">
-                                            <div class="made_appointment before-circle"></div>
-                                        </div>
-                                        <div class="experience-content">
-                                            <div class="timeline-content">
-                                                <a href="#/" class="name">22/06/2019</a>
-                                                <div>Effectuer</div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="experience-user">
-                                            <div class="canceled_appointment before-circle"></div>
-                                        </div>
-                                        <div class="experience-content">
-                                            <div class="timeline-content">
-                                                <a href="#/" class="name">22/05/2019</a>
-                                                <div>Patient Absent</div>
-                                            </div>
-                                        </div>
-                                    </li>
+                                    <?php displayAppointmentsPatient($_GET["id_patient"]); ?>
                                 </ul>
                             </div>
                         </div>

@@ -37,6 +37,7 @@ class DatabaseUtility {
         //connect to database ..    
         $this->databaseConnection = $this->_connect();
 
+
         //creér la valeur de saisie
         $insert_string = "INSERT INTO ".$table."(".$stringColumns.") VALUES (".$prepareValues.")";
 
@@ -171,7 +172,7 @@ class DatabaseUtility {
         //remove last ' , ' 
             $stringColumns = rtrim($stringColumns ,",");
         //call the private function 
-    private_updateData($table,$condition,$stringColumns,$arrayData);            
+        $this->private_updateData($table,$condition,$stringColumns,$arrayData);
     
 
     }

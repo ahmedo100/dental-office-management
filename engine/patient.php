@@ -55,16 +55,16 @@ class Patient {
     return  Patient::initPatientWithId($id_patient);
   }
 
-  function getAllPatients(){
-      $id_doctor=1;
-     $tmp_patient_array =  $this->db->selectData("patients","*","id_doctor='$id_doctor'");
-     $patient_array = array();
-     forEach($tmp_patient_array["result"]  as $tmp_array){
-         array_push($patient_array,Patient::initPatientWithArray($tmp_array));
-      }
-     return $patient_array;
-  }
 
+    function getAllPatients(){
+        $id_doctor=1;
+        $tmp_patient_array =  $this->db->selectData("patients","*","id_doctor='$id_doctor'");
+        $patient_array = array();
+        forEach($tmp_patient_array["result"]  as $tmp_array){
+            array_push($patient_array,Patient::initPatientWithArray($tmp_array));
+        }
+        return $patient_array;
+    }
   function addPatient($patient_arr){
       $return_result = $this->db->insertData("patients",$patient_arr);
 
@@ -72,7 +72,7 @@ class Patient {
       return true;
   }
     function displayPatient(){
-
+      $age = floor((time() - strtotime($this->birthdate_patient)) / 31556926);
         return " <div class='col-md-4 col-sm-4  col-lg-3'>
     <div class='profile-widget'>
         <div class='doctor-img'>
@@ -86,7 +86,7 @@ class Patient {
             </div>
         </div>
         <h4 class='doctor-name text-ellipsis'><a href='profile.php'>$this->full_name_patient</a></h4>
-        <div class='doc-prof'>$this->birthdate_patient</div>
+        <div class='doc-prof'>$age ans</div>
         <div class='user-country'>
             <i class='fa fa-phone'></i> $this->phone_number_patient
         </div>

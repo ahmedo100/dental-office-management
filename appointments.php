@@ -3,7 +3,7 @@
 <html lang="en">
 
 
-<!-- Mirrored from dreamguys.co.in/Medicare/template/add-appointment.php by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 07 Aug 2019 13:20:23 GMT -->
+<!-- Mirrored from dreamguys.co.in/Medicare/template/patients.php by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 07 Aug 2019 13:19:27 GMT -->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
@@ -26,36 +26,6 @@
             $("#headerContent").load("header.html");
             $("#navbarContent").load("navbar.html");
         });
-
-        function addAppointment(){
-            var user_gender ;
-            if($("#user-male").attr('checked', 'checked'))
-                user_gender = 1;
-            else if($("#user-female").attr('checked', 'checked'))
-                user_gender = 0;
-
-
-            $.ajax({
-                url : './engine/ajax.php',
-                type : 'POST',
-                data: { "type": "addAppointment",
-                    "id-patient": $("#id-patient").val(),
-                    "date-appointment": $("#date-appointment").val(),
-                    "hour-appointment": $("#datetimepicker3").val(),
-                    "message-appointment": $("#message-appointment").val()
-                },
-                success : function(data){
-                    if($.trim(data)== "created") {
-                        alert("rendez-vous ajouter avec succés");
-                        document.location.href="./appointments.php";
-                    }else {
-                        alert("Vous devez remplir tous les champs");
-                    }
-                }
-            });
-
-        }
-
     </script>
 </head>
 
@@ -64,55 +34,25 @@
     <div id="headerContent"></div>
     <div id="navbarContent"></div>
 
-      <div class="page-wrapper">
+    <div class="page-wrapper">
             <div class="content">
                 <div class="row">
-                    <div class="col-lg-8 offset-lg-2">
-                        <h4 class="page-title">Nouveau rendez-vous</h4>
+                    <div class="col-sm-4 col-3">
+                        <h4 class="page-title">Liste des rendez-vous</h4>
+                    </div>
+
+                    <div class="col-sm-8 col-9 text-right m-b-20">
+                        <a href="calendar.php" class="btn btn btn-primary btn-rounded " style="margin-right: 10px;"><i class="fa fa-calendar"></i> Vue calendrier</a>
+                        <a href="add-appointment.php" class="btn btn btn-primary btn-rounded float-right"><i class="fa fa-plus"></i> Nouveau</a>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-8 offset-lg-2">
-                            <div class="row">
-                                <div class="col-md-6">
-									<div class="form-group">
-										<label>Patient</label>
-										<select class="select" id="id-patient">
-											<option>Selectionner le patient</option>
-                                            <?php displaySelectPatients(); ?>
-										</select>
-									</div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Date</label>
-                                        <div class="cal-icon">
-                                            <input type="text" class="form-control datetimepicker" id="date-appointment">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Time</label>
-                                        <div class="time-icon">
-                                            <input type="text" class="form-control" id="datetimepicker3">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Message</label>
-                                <textarea cols="30" rows="4" class="form-control" id="message-appointment"></textarea>
-                            </div>
-                            <div class="m-t-20 text-center">
-                                <button class="btn btn-primary submit-btn" onclick="addAppointment()">Enregistrer</button>
-                            </div>
-                    </div>
+				<div class="row">
+					<div class="col-md-12">
+                        <?php  displayAppointmentTable(); ?>
+					</div>
                 </div>
             </div>
-			<div class="notification-box">
+            <div class="notification-box">
                 <div class="msg-sidebar notifications msg-noti">
                     <div class="topnav-dropdown-header">
                         <span>Messages</span>
@@ -319,10 +259,22 @@
                     <div class="topnav-dropdown-footer">
                         <a href="chat.html">See all messages</a>
                     </div>
-					
                 </div>
             </div>
-        </div>
+			<div id="delete_appointment" class="modal fade delete-modal" role="dialog">
+				<div class="modal-dialog modal-dialog-centered">
+					<div class="modal-content">
+						<div class="modal-body text-center">
+							<img src="assets/img/sent.png" alt="" width="50" height="46">
+							<h3>Are you sure want to delete this Appointment?</h3>
+							<div class="m-t-20"> <a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
+								<button type="submit" class="btn btn-danger">Delete</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
     </div>
     <div class="sidebar-overlay" data-reff=""></div>
     <script src="assets/js/jquery-3.2.1.min.js"></script>
@@ -330,19 +282,19 @@
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/jquery.slimscroll.js"></script>
     <script src="assets/js/select2.min.js"></script>
-	<script src="assets/js/moment.min.js"></script>
-	<script src="assets/js/bootstrap-datetimepicker.min.js"></script>
     <script src="assets/js/app.js"></script>
 	<script>
             $(function () {
                 $('#datetimepicker3').datetimepicker({
                     format: 'LT'
-
+                });
+				$('#datetimepicker4').datetimepicker({
+                    format: 'LT'
                 });
             });
      </script>
 </body>
 
 
-<!-- Mirrored from dreamguys.co.in/Medicare/template/add-appointment.php by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 07 Aug 2019 13:20:23 GMT -->
+<!-- Mirrored from dreamguys.co.in/Medicare/template/appointments.php by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 07 Aug 2019 13:19:29 GMT -->
 </html>
