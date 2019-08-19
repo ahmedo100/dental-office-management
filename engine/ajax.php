@@ -42,7 +42,8 @@ if($_POST["type"] == "addAppointment") {
         echo "notcreated";
     } else {
 
-        $timeStr = str_replace(" PM", "", $_POST["hour-appointment"]);
+       // $timeStr = str_replace(" PM", "", $_POST["hour-appointment"]);
+        $timeStr = date("H:i", strtotime($_POST["hour-appointment"]));
         $dateTime = new DateTime(date("Y-m-d", strtotime(str_replace('/', '-', $_POST["date-appointment"] )))." ".$timeStr, new DateTimeZone('UTC'));
         $timestamp = $dateTime->getTimestamp();
 

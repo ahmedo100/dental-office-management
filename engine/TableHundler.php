@@ -34,7 +34,7 @@ class TableHundler
             $body .= "<td>$array[$i]</td>";
            
             if ($this->options != $array) {
-                $body .= "<td class='text-right'>
+                $body .= "<td class=' dontprint text-right'>
 											<div class='dropdown dropdown-action'>
 												<a href='#' class='action-icon dropdown-toggle' data-toggle='dropdown' aria-expanded='false'><i class='fa fa-ellipsis-v'></i></a>
 												<div class='dropdown-menu dropdown-menu-right'>";

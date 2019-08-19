@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  Dim 18 août 2019 à 19:22
+-- Généré le :  lun. 19 août 2019 à 13:28
 -- Version du serveur :  5.7.23
 -- Version de PHP :  7.2.10
 
@@ -35,19 +35,18 @@ CREATE TABLE IF NOT EXISTS `appointment` (
   `id_patient` int(8) NOT NULL,
   `timestamp_appointment` bigint(20) NOT NULL,
   `message_appointment` text NOT NULL,
+  `is_appointment` int(11) NOT NULL,
   PRIMARY KEY (`id_appointment`),
   KEY `id_doctor` (`id_doctor`),
   KEY `id_patient` (`id_patient`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `appointment`
 --
 
-INSERT INTO `appointment` (`id_appointment`, `id_doctor`, `id_patient`, `timestamp_appointment`, `message_appointment`) VALUES
-(13, 1, 1, 1566200700, 'Consultation'),
-(14, 1, 6, 1566463860, 'Consultation'),
-(15, 1, 1, 1566104040, 'Detartage');
+INSERT INTO `appointment` (`id_appointment`, `id_doctor`, `id_patient`, `timestamp_appointment`, `message_appointment`, `is_appointment`) VALUES
+(13, 1, 1, 1566200700, 'Consultation', 0);
 
 -- --------------------------------------------------------
 
@@ -61,6 +60,8 @@ CREATE TABLE IF NOT EXISTS `doctors` (
   `full_name_doctor` varchar(128) NOT NULL,
   `gender_doctor` bit(1) NOT NULL,
   `phone_number_doctor` int(12) NOT NULL,
+  `username_doctor` varchar(64) NOT NULL,
+  `password_doctor` varchar(256) NOT NULL,
   PRIMARY KEY (`id_doctor`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
@@ -68,8 +69,8 @@ CREATE TABLE IF NOT EXISTS `doctors` (
 -- Déchargement des données de la table `doctors`
 --
 
-INSERT INTO `doctors` (`id_doctor`, `full_name_doctor`, `gender_doctor`, `phone_number_doctor`) VALUES
-(1, 'john murphy', b'1', 555555555);
+INSERT INTO `doctors` (`id_doctor`, `full_name_doctor`, `gender_doctor`, `phone_number_doctor`, `username_doctor`, `password_doctor`) VALUES
+(1, 'john murphy', b'1', 555555555, 'doc', '123');
 
 -- --------------------------------------------------------
 
@@ -95,8 +96,7 @@ CREATE TABLE IF NOT EXISTS `patients` (
 --
 
 INSERT INTO `patients` (`id_patient`, `id_doctor`, `full_name_patient`, `birthdate_patient`, `phone_number_patient`, `address_patient`, `gender_patient`) VALUES
-(1, 1, 'Abdi karim', '1997-06-17', '0666296904', '5, rue Jacques Callot', '1'),
-(6, 1, 'Baoun Ahmed Nadir', '1998-01-01', '0555555555', 'ZERALDA', '1');
+(1, 1, 'Abdi karim', '1997-06-17', '0666296904', '5, rue Jacques Callot', '1');
 
 --
 -- Contraintes pour les tables déchargées
@@ -106,8 +106,8 @@ INSERT INTO `patients` (`id_patient`, `id_doctor`, `full_name_patient`, `birthda
 -- Contraintes pour la table `appointment`
 --
 ALTER TABLE `appointment`
-  ADD CONSTRAINT `appointment_ibfk_1` FOREIGN KEY (`id_doctor`) REFERENCES `doctors` (`id_doctor`),
-  ADD CONSTRAINT `appointment_ibfk_2` FOREIGN KEY (`id_patient`) REFERENCES `patients` (`id_patient`);
+  ADD CONSTRAINT `appointment_ibfk_1` FOREIGN KEY (`id_doctor`) REFERENCES `doctors` (`id_doctor`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `appointment_ibfk_2` FOREIGN KEY (`id_patient`) REFERENCES `patients` (`id_patient`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `patients`

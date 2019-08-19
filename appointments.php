@@ -25,7 +25,21 @@
         $(function(){
             $("#headerContent").load("header.html");
             $("#navbarContent").load("navbar.html");
+
+            $("#printButton").click(function () {
+                var printme = document.getElementById("table");
+                var wme = window.open("","","width=900, height=700");
+                wme.document.write('<html><head><title>Liste des Rendez-vous</title> <style>@media print{.dontprint{display:none;} #table td, #table tr{ width: 20%; text-align: left;} </style></head><body>') ;
+                wme.document.write("<h2>Liste des rendez-vous</h2>");
+                wme.document.write(printme.outerHTML);
+                wme.document.write('</body></html>');
+                wme.document.close();
+                wme.focus();
+                wme.print();
+                wme.close();
+            });
         });
+
     </script>
 </head>
 
@@ -42,12 +56,13 @@
                     </div>
 
                     <div class="col-sm-8 col-9 text-right m-b-20">
+                        <a href="#0" id="printButton" class="btn btn btn-primary btn-rounded " style="margin-right: 10px;"><i class="fa fa-print"></i> Imprimer</a>
                         <a href="calendar.php" class="btn btn btn-primary btn-rounded " style="margin-right: 10px;"><i class="fa fa-calendar"></i> Vue calendrier</a>
                         <a href="add-appointment.php" class="btn btn btn-primary btn-rounded float-right"><i class="fa fa-plus"></i> Nouveau</a>
                     </div>
                 </div>
 				<div class="row">
-					<div class="col-md-12">
+					<div class="col-md-12"  id="table">
                         <?php  displayAppointmentTable(); ?>
 					</div>
                 </div>

@@ -4932,3 +4932,9 @@ blockquote p {
 .made_appointment{
 	background: #27ae60;
 }
+
+@media print {
+	.dontprint {
+		display:none;
+	}
+}

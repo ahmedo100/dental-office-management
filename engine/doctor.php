@@ -1,7 +1,7 @@
 <?php   
 require_once 'database-logs.php';
 require_once 'database-functions.php';
-class Doctor {
+class   Doctor {
 
     // Parameters ..
 
@@ -31,7 +31,7 @@ class Doctor {
     }
 
     function initDoctor(){
-        $doctor = $db->selectData("doctors","*","id_doctor='"+$this->id_doctor+"';")[0];
+        $doctor = $this->db->selectData("doctors","*","id_doctor='"+$this->id_doctor+"';")[0];
         $this->full_name_doctor = $doctor["full_name_doctor"];
         $this->gender_doctor= $doctor["gender_doctor"];
     }
@@ -40,6 +40,13 @@ class Doctor {
         return Doctor::initDoctorWithId($id_doctor);
     }
 
+    function getDoctorByUsername($username,$password){
+        $return_result = $this->db->selectData("doctors","*","username_doctor='$username' AND password_doctor='$password';");
+        if($return_result["success"]){
+            return $return_result['result'];
+        }
+        return array();
+    }
     
 
 
